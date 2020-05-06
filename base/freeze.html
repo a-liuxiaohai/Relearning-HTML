@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     * 如果想让const的引用类型不可以修改的话，可以使用 Object.freeze()方法去冻结变量，这样就不可以在修改了
+    */
+
+    const INFO = {
+      url:'http://wwww.baidu.com/api',
+      port:8080
+    }
+
+    INFO.port = 8090
+    console.log(INFO) // 这边是可以进行修改的
+
+    // 现在对这个对象就行冻结
+    Object.freeze(INFO)
+    INFO.url = 'http://localhost:3000'
+    console.log(INFO,'我是冻结') // 怎么修改都没有用了
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // let 可以对值进行修改
+    let name = 'liu'
+    name='xiao'
+    console.log(name)
+
+    // 对于值类型是不可以修改的，对于引用类型是可以修改的
+    const age = 19
+    age=17 // 值类型修改会有报错
+    console.log(age)
+
+    const person = {name:'liuxiaohai'}
+    person.name='maoshuang'
+    console.log(person)  // maoshuang
+  </script>
+</body>
+</html>
