@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" class="name" />
+    <span class="message"></span>
+    <script>
+      /*
+        根据input的长度来给出相应的提示
+      */
+      let span = getDom("message");
+      let inputName = getDom("name");
+      console.log(span, inputName);
+      inputName.addEventListener("keyup", function () {
+        if (this.value.length > 10) {
+          span.innerHTML = "密码强度高";
+        } else if (this.value.length < 5) {
+          span.innerHTML = "密码强度低";
+        } else {
+          span.innerHTML = "请输入密码";
+        }
+      });
+
+      // 获取元素的函数
+      function getDom(ele) {
+        return document.querySelector(`.${ele}`);
+      }
+      </script>
+  </body>
+</html>

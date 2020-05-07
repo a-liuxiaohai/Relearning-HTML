@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+</head>
+<body>
+ <script>
+   // 用于遍历对象的所有属性，for/in主要用于遍历对象，不建议用来遍历数组。
+
+   let object = {
+     name:'liuxiaohai',
+     age:18,
+     six:'man',
+     hobby:{
+       name:'game',
+       age:3
+     }
+   }
+
+  // 深拷贝1 拷贝之后，怎么改都不会影响原数组了
+  function copyObj(object){
+    if(!object) return
+    let result = {}
+    for (const key in object) {
+      if (object.hasOwnProperty(key)) {
+        if(typeof object[key] === 'object'){
+          result[key]  = copyObj(object[key])
+        }else{
+          result[key] = object[key]
+        }
+      }
+    }
+    return result
+  }
+
+  let person4 = copyObj(object)
+  person4.hobby.name='douniu'
+  console.log('深拷贝',person4)
+  console.log('深拷贝对比',object)
+
+
+  // 浅拷贝1
+  let person = Object.assign({},object)
+  person.hobby.name='maoshuang'  // 当对象里面还有引用数据类型，那么则会拷贝对象的地址，如果修改会影响到之前的
+  // 浅拷贝2
+  let person2 = {...object}
+  console.log('person2',person2)
+  // 浅拷贝3
+  let person3 = {}
+  for (const key in object) {
+    if (object.hasOwnProperty(key)) {
+       person3[key] = object[key];
+    }
+  }
+  console.log('person3',person3)
+ </script>
+</body>
+</html>

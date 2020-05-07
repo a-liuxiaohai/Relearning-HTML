@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // split 把一个字符串分割成字符串数组，不改变原字符串，
+      // join 拼接
+      let name = "lixuiaohai & maoshuang";
+      let splitName = name.split("&");
+      console.log(splitName); //["lixuiaohai ", " maoshuang"]
+
+      // join 是数组的方法，可以拼接成一个字符串
+      console.log(splitName.join("|")); //lixuiaohai | maoshuang
+
+      let arr = [1, 2, 3];
+      console.log(arr.join(""));
+    </script>
+  </body>
+</html>

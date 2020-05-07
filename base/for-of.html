@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 用来遍历 Arrays（数组）, Strings（字符串）, Maps（映射）, Sets（集合）等可迭代的数据结构。
+      // 与 for/in 不同的是 for/of 每次循环取其中的值而不是索引。
+
+      let arr = [1, 2, 3, 4, 5];
+      for (const key in arr) {
+        console.log(key); // 用forin去遍历数组的话，那么得到的是下标索引
+      }
+
+      for (const value of arr) {
+        console.log(value); // for/of 用来遍历数组，每次循环得到其中的值
+      }
+    </script>
+  </body>
+</html>

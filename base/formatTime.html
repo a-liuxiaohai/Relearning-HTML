@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 封装一个时间处理函数,这种是不需要传格式进去的
+      let date = new Date();
+      function formatTime(date) {
+        let year = date.getFullYear();
+        month = date.getMonth() + 1;
+        day = date.getDate();
+        hours = date.getHours();
+        minute = date.getMinutes();
+        second = date.getSeconds();
+        return `${year}年${month}月${day}日 ${hours}:${minute}:${second}`;
+      }
+      let newDate = formatTime(date);
+      console.log(newDate);
+
+      // 可以传递格式进去的
+      function dateFormat(date, format = "YYYY-MM-DD HH:mm:ss") {
+        // 格式
+        let config = {
+          YYYY: date.getFullYear(),
+          MM: date.getMonth(),
+          DD: date.getDate(),
+          HH: date.getHours(),
+          mm: date.getMinutes(),
+          ss: date.getSeconds(),
+        };
+        // forin
+        for (const key in config) {
+          format = format.replace(key, config[key]);
+        }
+        return format;
+      }
+      console.log(dateFormat(date, "YYYY-MM-DD"));
+    </script>
+  </body>
+</html>

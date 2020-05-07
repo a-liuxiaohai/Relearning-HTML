@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // indexOf 用于查找字符串的下标，如果没找到返回-1
+      let str = "liuxiaohai";
+      console.log(str.indexOf("l")); // 下标0 返回当前的下标
+      console.log(str.indexOf("h", 3)); // 下标7 从下标3之后往后查找
+
+      // lastIndexOf 从结尾来搜索字符串位置
+      console.log("houdunren.com".lastIndexOf("o")); //11 从后往前搜索
+      console.log("houdunren.com".lastIndexOf("o", 7)); //1 从第7个字符向前搜索
+    </script>
+  </body>
+</html>

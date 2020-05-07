@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    请输入文字<input type="text" name="text" />
+    <p>大好河山</p>
+
+    <script>
+      // replace 字符串替换的方法
+      let name = "liuxiaohai";
+      let web = name.replace("xiaohai", "mao");
+      console.log(web); // liumao
+
+      // 给下列string里面的php和css添加个a连接
+      const word = ["php", "css"];
+      const string = "我喜欢在后盾人学习php与css知识";
+      const title = word.reduce((pre, word) => {
+        return pre.replace(word, `<a href="?w=${word}">${word}</a>`);
+      }, string);
+      document.body.innerHTML = title;
+    </script>
+  </body>
+</html>

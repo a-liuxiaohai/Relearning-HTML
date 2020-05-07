@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 模糊后面三位数，脱敏
+
+      function formatMoblie(number, len = 3) {
+        return String(number).slice(0, -1 * len) + "*".repeat(len);
+      }
+      let newNumber = formatMoblie(18970446252, 4);
+      console.log(newNumber);
+    </script>
+  </body>
+</html>
