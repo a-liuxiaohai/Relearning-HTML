@@ -35,10 +35,11 @@
         // forin
         for (const key in config) {
           format = format.replace(key, config[key]);
+          console.log(format, "查看下format");
         }
         return format;
       }
-      console.log(dateFormat(date, "YYYY-MM-DD"));
+      console.log(dateFormat(date, "YYYY年MM月DD日"));
     </script>
   </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. map 创建一个新数组，其结果是该数组中的每个元素都调用一个提供函数后的返回的结果
+       *2. 使用map映射可以在数组的所有元素上应用函数，用于映射出新的值
+       */
+
+      let lessons = [
+        { title: "媒体查询响应式布局", category: "css" },
+        { title: "FLEX 弹性盒模型", category: "css" },
+        { title: "MYSQL多表查询随意操作", category: "mysql" },
+      ];
+
+      // 案例1: 获取数组所有标题组合的新数组
+      let newarr = lessons.map((item) => item.title);
+      console.log(newarr);
+
+      // 案例2: 为所有的标题添加上 前端人
+      let arrPush = lessons.map((item) => (item = "前端人-" + item.title));
+      console.log(arrPush);
+    </script>
+  </body>
+</html>

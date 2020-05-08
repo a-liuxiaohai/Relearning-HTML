@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. 检查数组中是否包含某个值  includes() 返回布尔类型
+       *2.
+       */
+      let arr = [7, 23, 3, 1, 66];
+      console.log(arr.includes(8)); // 不包含8 所有返回false
+
+      // 探寻原理
+      function includes(arr, item) {
+        for (const value of arr) {
+          if (value === item) return true;
+          return false;
+        }
+      }
+      console.log(includes(arr, 7)); // 返回了true
+    </script>
+  </body>
+</html>

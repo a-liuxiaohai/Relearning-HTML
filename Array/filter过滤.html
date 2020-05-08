@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. 使用filter可以过滤数据中元素，返回一个新数组，在回调函数中返回true留下来
+       *2.
+       */
+
+      // 案例1: 下面是获取所有在css栏目的课程
+      let lessons = [
+        { title: "媒体查询响应式布局", category: "css" },
+        { title: "FLEX 弹性盒模型", category: "css" },
+        { title: "MYSQL多表查询随意操作", category: "mysql" },
+      ];
+
+      let cssLessons = lessons.filter((v) => v.category == "css");
+      console.log(cssLessons); // 返回了2条属于的
+
+      // 案例2: 写一个过滤的方法来加深些技术
+      function except(arr, excepts) {
+        const newArr = [];
+        for (const ele of arr) {
+          if (!excepts.includes(ele)) newArr.push(ele);
+        }
+        return newArr;
+      }
+      console.log(except([1, 2, 3, 4], [1, 4]));
+    </script>
+  </body>
+</html>

@@ -225,6 +225,7 @@ function dateFormat(date,foramt='YYYY-MM-DD HH:mm:ss'){
   // for/in 对格式进行替换，这样外面传递进来什么格式就可以进行获取相应的值
   for(let key in config){
     format = format.replace(key,config[key])
+    // format.replace('找到需要替换的项'，'替换想要的内容')
   }
   // 把结果返回出去
   return format

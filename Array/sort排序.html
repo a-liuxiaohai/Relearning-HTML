@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. sort 每次使用两个值进行比较 Array.sort((a,b)=> a-b)
+       *2. 返回负数 a排在b前面，从小到大
+       *3. 返回正数 b排在a前面，从大到小
+       */
+
+      // 案例1: 排序
+      let arr = [6, 4, 12, 34, 12, 23];
+      console.log(arr.sort((a, b) => a - b)); // 从小到大
+      console.log(arr.sort((a, b) => b - a)); // 从大到小
+
+      // 案例2: 下面课程点击数由高到低排序
+      let lessons = [
+        { title: "媒体查询响应式布局", click: 78 },
+        { title: "FLEX 弹性盒模型", click: 12 },
+        { title: "MYSQL多表查询随意操作", click: 99 },
+      ];
+      let sortLessons = lessons.sort((a, b) => b.click - a.click);
+      console.log(sortLessons);
+
+      // 案例3： 排序原理
+      let sortArr = [1, 23, 412, 43, 12];
+      function sort(arr, callback) {
+        for (const a in arr) {
+          for (const b in arr) {
+            if (callback(arr[a], arr[b]) < 0) {
+              let temp = arr[a];
+              arr[a] = arr[b];
+              arr[b] = temp;
+            }
+          }
+        }
+        return arr;
+      }
+
+      let callback = function (a, b) {
+        return a - b;
+      };
+
+      let newSortArr = sort(sortArr, callback);
+      console.log(newSortArr, "排序后的结果");
+    </script>
+  </body>
+</html>

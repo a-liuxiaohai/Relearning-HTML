@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. keys 通过迭代对象获取索引，数组中可以使用多种迭代器方法
+       *2. values 通过迭代对象获取值
+       *3. entries 返回数组中所有的键值对
+       *4. for/of 语句在可迭代对象（包括Array，Map，Set，String，TypedArray，argumns对象等等）上创建一个迭代循环，调用自定义迭代钩子，为每个不同属性的值执行语句
+       */
+
+      // keys 通过迭代对象获取索引
+      const hd = ["houdunren", "hdcms"];
+      // Array Iterator返回一个迭代对象
+      console.log(hd.keys(), "keys");
+      // 也是返回一个 Array Iterator返回一个迭代对象
+      console.log(hd.values(), "values");
+      // 也是返回一个 Array Iterator返回一个迭代对象
+      console.log(hd.entries(), "entries");
+
+      // hd.keys() 获取到了一个迭代对象，通过for/of能迭代对象
+      for (const key of hd.keys()) {
+        console.log(key); // 索引 0,1
+      }
+
+      // hd.values() 获取到了一个值的迭代对象
+      for (const value of hd.values()) {
+        console.log(value, "值");
+      }
+
+      // hd.entries() 获取到的是一个有下标有值的迭代对象
+      for (const [key, value] of hd.entries()) {
+        console.log(key, value); // 0 'houdunren' 1 'hdcms'
+      }
+    </script>
+  </body>
+</html>

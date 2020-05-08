@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. find() 找到后会把值返回出来，如果找不到返回undefin
+       *2. 返回第一次找到的值，不继续查找
+       *3. find可以方便的查找引用类型，但是includes不能查找引用数据类型
+       */
+
+      // 案例1: 在arr数组中查找有12的值吗
+      let arr = [1, 2, 3, 4, 12, 43, 12];
+      let find = arr.find((item) => item === 12);
+      console.log(find); // 返回了12
+
+      // 案例2: 查找引用类型
+      let user = [{ name: "lisi" }, { name: "zhangsan" }];
+      let findUser = user.find((user) => (user.name = "lisi"));
+      console.log(findUser);
+
+      // 案例3: find原理
+      function findItem(arr, callback) {
+        for (const value of arr) {
+          // 如果回调函数里面的值跟value相等，那么return value
+          if (callback(value) === true) return value;
+        }
+        return undefined;
+      }
+      // 回调函数
+      function callback(item) {
+        return item === 12;
+      }
+      let res = findItem(arr, callback);
+      console.log(res, "find原理");
+
+      // 案例4: 下面通过添加原型方法实现
+      Array.prototype.findValue = function (callback) {
+        // 谁调用this指向谁
+        for (const value of this) {
+          if (callback(value)) return value;
+        }
+        return undefined;
+      };
+
+      // arr.findValue 直接调用了原型上
+      let result = arr.findValue(function (item) {
+        return item == 2;
+      });
+      console.log(result);
+    </script>
+  </body>
+</html>

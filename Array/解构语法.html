@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. 解构语法，将有需要的变量或者值，解构取出来用，一一对应
+       *2. 剩余解构指用一个变量来接受剩余参数
+       */
+
+      // 案例1: 利用解构直接获取值
+      let arr = ["liuxiaohai", "maodashuang"];
+      let [man, women] = arr;
+      console.log(man, women); // liuxiaohai  maodashuang
+
+      // 案例2: 剩余解构指用一个变量来接受剩余参数
+      let [a, ...b] = [1, 2, 4, 5];
+      console.log(b); // 2 4 5 通过。。。把剩余参数吸收到b变量去了
+
+      // 案例3: 也可以设置默认值
+      let [name, site = "liu"] = ["houdunren"];
+      console.log(name, site);
+    </script>
+  </body>
+</html>

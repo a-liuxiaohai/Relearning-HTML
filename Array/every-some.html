@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. every 用于递归的检测元素，要所有的元素操作都要返回true，结果才会为true
+       *2. some 用于递归的检查元素，如果有一个为true，表达式的结果就为真
+       */
+
+      // 案例1: 查看班级中的同学js成绩是否都及格
+      const user = [
+        { name: "李四", js: 89 },
+        { name: "马六", js: 55 },
+        { name: "张三", js: 78 },
+      ];
+
+      let res = user.every((item) => item.js >= 60);
+      console.log(res, "返回false就是不及格");
+
+      // 案例2: every标题关键词检查
+      let words = ["后盾", "北京", "培训"];
+      let title = "后盾人在北京不断分享技术培训教程";
+      let state = words.every((item, index, words) => {
+        return title.indexOf(item) >= 0;
+      });
+
+      state
+        ? console.log("标题里面的内容都含有")
+        : console.log("标题里的内容部分不含有");
+
+      // 案例3: 下面使用some去检测关键词，如果匹配到一个词就提示违规
+      let text = ["小网站", "小影片", "小卡片"];
+      let input = "这部小影片挺不错的";
+      let result = text.some((v, i) => {
+        return input.indexOf(v) != -1;
+        // return input.includes(v);
+      });
+      console.log(result ? console.log("违规了") : console.log("没有违规"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. reduce 方法接受一个函数作为累加器，数组中的每一个值（从左到右）开始缩减，最终计算为一个值
+       *2. 参数1 执行的函数，函数里面有（pre，cur，index，array）
+       *3. 参数2 为初始值，传入第二个参数时，将所有的元素循环一遍，不传第二个参数时，从第二个元素开始循环
+       *4.
+       */
+
+      // 案例1: 用于统计元素所出现的次数
+      let score = [67, 78, 45, 67, 23, 21, 123, 12, 32, 23, 78, 67];
+      function countArrEle(arr, ele) {
+        return arr.reduce((total, cur) => {
+          return (total += cur === ele ? 1 : 0);
+        }, 0);
+      }
+      console.log(countArrEle(score, 67));
+
+      // 案例2: 求数组中最大的值
+      function getMax(arr) {
+        // 没传第二个参数，那么可以pre默认是从第一个走，pre = 如果pre大于cur那么交换位置
+        return arr.reduce((pre, cur) => (pre = pre > cur ? pre : cur));
+      }
+      console.log(getMax(score));
+
+      // 案例3: 取价格最高的商品
+      let cart = [
+        { name: "iphone", price: 12000 },
+        { name: "imac", price: 25000 },
+        { name: "ipad", price: 6000 },
+      ];
+
+      function getMaxPrice(cart) {
+        return cart.reduce((pre, cur) => (pre.price > cur.price ? pre : cur));
+      }
+      console.log(getMaxPrice(cart));
+
+      // 案例4: 计算购物车的商品总价钱
+      function getPriceCount(goods) {
+        return goods.reduce((total, cur) => {
+          // 求商品总和，可以传递第二个参数作为初始值，
+          return (total += cur.price);
+        }, 0);
+      }
+      console.log(getPriceCount(cart));
+
+      // 案例5: 获取价格超过1万的商品名称
+      // 超过1万的商品，有可能会有很多个
+      function getyiwang(cart, price) {
+        // 初始化一个数组为初始值，将从第一个数开始遍历，cur就是从第一个开始
+        // 如果当前元素的价格大于传递进来的值，那么就添加到pre初始的数组里面去
+        return cart.reduce((pre, cur) => {
+          if (cur.price > price) {
+            pre.push(cur);
+          }
+          return pre;
+        }, []);
+      }
+      console.log(getyiwang(cart, 9999));
+
+      // 案例6: 使用reduce 实现数组去重
+      let quchongArr = [1, 2, 6, 2, 1];
+      let filterArr = quchongArr.reduce((pre, cur) => {
+        if (pre.includes(cur) === false) {
+          pre = [...pre, cur];
+        }
+        return pre;
+      }, []);
+
+      console.log(filterArr);
+    </script>
+  </body>
+</html>

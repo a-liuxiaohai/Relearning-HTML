@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. for/of 每次循环其中的值，而for/in获取到的是每个下标
+       *2.
+       */
+
+      // 案例1: for/in遍历数组的话，每次是获取到的是索引
+      let lessons = [
+        { title: "媒体查询响应式布局", category: "css" },
+        { title: "FLEX 弹性盒模型", category: "css" },
+        { title: "MYSQL多表查询随意操作", category: "mysql" },
+      ];
+      for (const key in lessons) {
+        console.log(key); // 下标 0 1 2，然后通过下标取值
+        console.log(lessons[key].title); // 获取到每个title
+      }
+
+      // 案例2:for/of 每次循环获取到的是value
+      for (const value of lessons) {
+        console.log(value); // item 获取到的是每一项
+        console.log(value.title); // 获取到title
+      }
+
+      // 案例3 使用数组迭代对象遍历获取索引与值
+
+      const hd = ["houdunren", "hdcms"];
+      // 第一种方法
+      for (const key in hd) {
+        console.log(`索引${key},值${hd[key]}`);
+      }
+      // 第二种方法
+      for (const [index, value] of hd.entries()) {
+        console.log(`${index}索引，${value}值`);
+      }
+
+      // 案例3 取数组中的最大值
+      function getMax(arr) {
+        // 取最大值，可以先声明一个变量为最大值，然后遍历，只要大于就更新值，然后return出去
+        let max = arr[0];
+        for (const value of arr) {
+          if (value > max) max = value;
+        }
+        return max;
+      }
+      console.log(getMax([12, 31, 432, 123, 234]));
+    </script>
+  </body>
+</html>

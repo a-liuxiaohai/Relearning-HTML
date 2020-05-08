@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. forEach 对数组的每一个元素执行一次提供的函数，功能相当于for循环
+       *2.
+       */
+
+      // 案例1: 下列例子是截取标签的5个字符串
+      let lessons = [
+        { title: "媒体查询响应式布局", category: "css" },
+        { title: "FLEX 弹性盒模型", category: "css" },
+        { title: "MYSQL多表查询随意操作", category: "mysql" },
+      ];
+
+      lessons.forEach((item) => (item.title = item.title.substr(0, 5)));
+      console.log(lessons);
+    </script>
+  </body>
+</html>

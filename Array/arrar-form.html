@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button messgae="后盾人">button</button>
+    <button message="houdunren">button</button>
+    <script>
+      /*
+       *1. Array.form() 用于将类数组转为真正的数组，类数组包含length属性或可以迭代的对象，
+       *2. 第一个参数：要转换的数据，第二个参数，类似于map函数的回调方法
+       */
+
+      // 案例1 字符串拥有length ，可以使用Array.from去转换为真数组
+      let name = "liuxiaohai";
+      console.log(name.length); // string类型有length属性
+
+      let arr = Array.from(name);
+      console.log(arr); // ["l", "i", "u", "x", "i", "a", "o", "h", "a", "i"]
+
+      // 案例2 将对象设置length属性，也可以转换为数组，但是小表为数值或者字符串
+      let user = {
+        0: "liuxiaohai",
+        1: 18,
+        length: 2,
+      };
+      console.log(Array.from(user)); // ['liuxiaohai',18]
+
+      // 案例3 获取dom元素也可以转成数组来去操作
+
+      let btns = document.querySelectorAll("button");
+      console.log(btns); // 类数组，有length属性
+      Array.from(btns, (item) => (item.style.background = "red"));
+    </script>
+  </body>
+</html>
