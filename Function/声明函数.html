@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. 在js中函数也是对象函数是Function类的创建的实例
+       *2. 标准语法使用函数声明的权重大于赋值函数的形式
+       *3. 全局函数会声明在window中，使用var也会，所以尽可能使用let const不会压入到window
+       */
+
+      // 案例1: new 创建
+      let fun = new Function();
+      fun();
+
+      // 案例2: 标准语法使用函数声明来定义函数
+      function hd(num) {
+        return ++num;
+      }
+      hd(1);
+
+      // 案例3: 对象字面量属性函数简写
+      let user = {
+        name: "",
+        setName(value) {
+          return (this.name = value);
+        },
+        getName() {
+          return this.name;
+        },
+      };
+      user.setName("liuxiaohai"); // 设置下名字
+      console.log(user.getName()); // liuxiaohai
+
+      // 匿名函数是对象，所以可以通过赋值来指向到函数对象的指针
+      let func = function (num) {
+        return num++;
+      };
+      func(1);
+
+      function sum(...args) {
+        return args.reduce((sum, cur) => sum + cur);
+      }
+      console.log(sum(1, 2, 3));
+    </script>
+  </body>
+</html>

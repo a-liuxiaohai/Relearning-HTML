@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. 递归指函数内部调用自身的方式
+       *2. 主要用于数量不确定的循环操作
+       *3. 要有退出时机否则会陷入死循环
+       */
+
+      // 案例1： 下面通过阶乘来体验递归调用
+      function factorial(num = 3) {
+        return num == 1 ? num : num * factorial(--num);
+      }
+      console.log(factorial(5));
+
+      // 案例2:累加计算方法
+      function sum(...num) {
+        return num.length == 0 ? 0 : num.pop() + sum(...num);
+      }
+      console.log(sum(1, 2, 3, 4, 5, 6));
+    </script>
+  </body>
+</html>

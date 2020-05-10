@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button message="后端">button</button>
+    <button message="hdcme">button</button>
+    <script>
+      /*
+       *1. apply  第一个参数为this指向，第二个参数是数组，会立即执行函数
+       *2. call , 第一个参数为this指向，第二个是一个或多个参数，会立即执行函数
+       *3. bind ， 是将函数绑定到某个对象上，与call和apply不同，bind不会立即执行，需要自己在调用一下，
+           bind是复制函数形成为返回新函数
+       *4. 改变this指针，也可以理解为对象借用方法，就像生活中向邻居借一样东西一样
+       */
+
+      // 案例1: 使用call来改变this指向
+      function user(name) {
+        return (this.name = name); // 空,此时this是指向window
+      }
+      let hd = {
+        // name: "liuxiaohai",
+      };
+
+      // 使用call去调用
+      let res = user.call(hd, "liuxiaohai");
+      console.log(res);
+
+      // 案例2: 分别使用 call和apply
+      function show(title) {
+        alert(`${title + this.name}`);
+      }
+      let lisi = { name: "李四" };
+      let wangwu = { name: "王五" };
+      console.log(show.call(lisi, "大家好我是")); // 使用call调用
+      console.log(show.apply(wangwu, ["我是王五的爸爸"])); //需要的是一个数组
+
+      // 案例3： 使用call设置函数上下文
+      let btns = document.getElementsByTagName("button");
+      function show1() {
+        console.log("1211221", this);
+
+        return alert(this.getAttribute("message"));
+      }
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", () => show1.call(btns[i]));
+      }
+
+      // 案例4: 找数组中数值最大值，想着可以使用上面方法，然后去借用
+      let arr = [1, 2, 3, 4, 5];
+      console.log(Math.max(arr), "求最大值"); //NAN
+      console.log(Math.max.apply(Math, arr)); // 5, 从Math.max去调用，第一个参数this指向Math，第二个参数为值
+      console.log(Math.max(...arr), "使用解构");
+
+      // 案例5: bind
+      function sumFun(a, b) {
+        return this.num + a + b;
+      }
+      // 使用bind会生成新函数
+      let fun = sumFun.bind({ num: 1 }, 1, 2);
+      console.log(sumFun == fun); // false,两个函数不相同
+      console.log(fun(), "bind");
+    </script>
+  </body>
+</html>

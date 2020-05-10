@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. 展开语法体现的方式就是 收/放特性，作为值的时候是 放，作为接受变量时是 收
+       *2.
+       */
+
+      // 案例1:使用展开语法可以替代 arguments 来接受任意参数的变量
+      function head(...args) {
+        console.log(arguments); // 一个伪数组
+        console.log(Array.isArray(arguments)); // false ，不是一个数组，但是所有的参数都在arguments
+        console.log(args); // [1,2,3.4]
+        console.log(Array.isArray(args)); // true
+      }
+      head(1, 2, 3, 4);
+
+      // 案例2: 多个参数时，。。。参数必须放在后面，下面计算购物车商品折扣
+
+      function sum(discount = 0, ...price) {
+        let total = price.reduce((total, cur) => total + cur);
+        return total * (1 - discount);
+      }
+      console.log(sum(0.1, 1000, 2000, 3000));
+    </script>
+  </body>
+</html>

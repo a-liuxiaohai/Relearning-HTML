@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       *1. 调用函数时this会隐式传递给函数指函数调用时向关联对象，也称之为函数的上下文
+       *2. 全局环境下，this就是window对象的引用
+       *3. 方法调用模式，this指向该对象
+       *4. 箭头函数没有this，也可以理解为箭头函数中this会继承定义函数时的上下文，可以理解为和外层函数指向同一个this
+       */
+
+      //案例1: 全局模式下，this指向window
+      console.log(this == window); // true
+
+      // 案例2: 函数当被new时即为构造函数，一般构造函数中包含属性与方法，函数中的上下文指向到实例对象
+      function user() {
+        (this.name = "liuxiaohai"),
+          (this.say = function () {
+            console.log(this); // user {name: "liuxiaohai", say: ƒ}
+            return this.name;
+          });
+      }
+      let hd = new user();
+      console.log(hd.say());
+
+      //案例3: 对象字面量
+      let obj = {
+        name: "houdunren",
+        show() {
+          console.log(this.name); // houdunren
+          console.log(this); // 指向obj这个上下文
+          function hd() {
+            console.log(this); // this指向了window
+          }
+          hd();
+        },
+      };
+      console.log(obj.show());
+
+      //案例4: 改变this指向，在一些方法中使用函数可以改变this，如forEach，map的回调函数
+      let Lesson = {
+        name: "liuxiaohai",
+        lists: ["js", "css", "mysql"],
+        show() {
+          // const that = this;
+          return this.lists.map(function (item) {
+            // 这个function的this指向了window，如何获取上面的this呢
+            // 1.可以上面定义一个 let that = this
+            //  2.可以把上面的this，传递过来
+            // return `${that.name} - ${item}`;
+            return `${this.name} - ${item}`;
+          }, this);
+        },
+        hide() {
+          // 把this当第二个参数传递进去
+          return this.lists.map((ele) => this.name + "-" + ele, this);
+        },
+      };
+      console.log(Lesson.show());
+      console.log(Lesson.hide());
+    </script>
+  </body>
+</html>
